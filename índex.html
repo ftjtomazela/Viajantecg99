@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viajante CG 99 | Link in Bio</title>
+    <style>
+        /* CSS - O visual da página */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+            /* Um fundo sutil que remete a asfalto/estrada */
+            background-image: radial-gradient(circle at center, #2a2a2a 0%, #121212 100%);
+        }
+
+        .profile-container {
+            text-align: center;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #ff9800; /* Cor laranja lembrando o pisca da CG */
+            box-shadow: 0 0 15px rgba(255, 152, 0, 0.5);
+            margin-bottom: 15px;
+            object-fit: cover;
+            background-color: #333;
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .bio {
+            color: #b3b3b3;
+            font-size: 1rem;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .links-container {
+            width: 100%;
+            max-width: 400px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            padding: 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            color: #fff;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        /* Efeito de hover (quando passa o mouse/dedo) */
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .btn-tiktok {
+            background: linear-gradient(45deg, #00f2fe, #4facfe, #000000);
+            background-size: 200% 200%;
+            animation: gradientMove 3s ease infinite;
+        }
+
+        .sponsor-section {
+            background-color: #1e1e1e;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+        .sponsor-section h2 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: #ff9800;
+        }
+
+        .sponsor-section p {
+            font-size: 0.9rem;
+            color: #ccc;
+            margin-bottom: 15px;
+        }
+
+        .pix-box {
+            display: flex;
+            background-color: #000;
+            border-radius: 5px;
+            overflow: hidden;
+            border: 1px solid #444;
+        }
+
+        .pix-code {
+            flex-grow: 1;
+            padding: 10px;
+            color: #fff;
+            background: transparent;
+            border: none;
+            outline: none;
+            font-family: monospace;
+            font-size: 1rem;
+        }
+
+        .btn-copy {
+            background-color: #ff9800;
+            color: #000;
+            border: none;
+            padding: 0 20px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-copy:hover {
+            background-color: #e68a00;
+        }
+
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #4CAF50;
+            color: #fff;
+            text-align: center;
+            border-radius: 5px;
+            padding: 15px;
+            position: fixed;
+            z-index: 1;
+            bottom: 30px;
+            font-size: 1rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+
+        #toast.show {
+            visibility: visible;
+            animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        }
+
+        @keyframes gradientMove {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        @keyframes fadein {
+            from {bottom: 0; opacity: 0;}
+            to {bottom: 30px; opacity: 1;}
+        }
+
+        @keyframes fadeout {
+            from {bottom: 30px; opacity: 1;}
+            to {bottom: 0; opacity: 0;}
+        }
+    </style>
+</head>
+<body>
+
+    <div class="profile-container">
+        <div class="profile-img"></div>
+        <h1>Viajante CG 99</h1>
+        <p class="bio">O Brasil visto de uma 125cc.<br>Pouca roupa e muita história. 🎒🏍️</p>
+    </div>
+
+    <div class="links-container">
+        <a href="https://www.tiktok.com/@viajantecg99" target="_blank" class="btn btn-tiktok">
+            Acompanhe no TikTok
+        </a>
+
+        <div class="sponsor-section">
+            <h2>Patrocine o próximo km ⛽</h2>
+            <p>Ajude a manter a CG 99 na estrada! Copie a chave Pix abaixo e mande qualquer valor para a gasolina:</p>
+            
+            <div class="pix-box">
+                <input type="text" id="pixInput" class="pix-code" value="ftj230291.com" readonly>
+                <button class="btn-copy" onclick="copiarPix()">Copiar</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast">Chave Pix copiada com sucesso! 🏍️💨</div>
+
+    <script>
+        /* JavaScript - Faz o botão de copiar funcionar */
+        function copiarPix() {
+            var input = document.getElementById("pixInput");
+            
+            // Seleciona o texto
+            input.select();
+            input.setSelectionRange(0, 99999); // Para dispositivos móveis
+            
+            // Copia para a área de transferência
+            navigator.clipboard.writeText(input.value).then(function() {
+                // Mostra a notificação (Toast)
+                var toast = document.getElementById("toast");
+                toast.className = "show";
+                
+                // Esconde a notificação depois de 3 segundos
+                setTimeout(function(){ 
+                    toast.className = toast.className.replace("show", ""); 
+                }, 3000);
+            }).catch(function(err) {
+                console.error('Erro ao copiar: ', err);
+                alert("Não foi possível copiar automaticamente. Selecione o texto manualmente.");
+            });
+        }
+    </script>
+</body>
+</html>
